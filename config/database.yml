@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
-  database: photo_modo
+  database: photo_modo_development
 
 test:
   adapter: postgresql
-  database: photo_modo
+  database: photo_modo_test
