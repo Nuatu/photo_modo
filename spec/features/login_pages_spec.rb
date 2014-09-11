@@ -7,6 +7,8 @@ describe "the signin process" do
     fill_in 'email', with: 'user@example.com'
     fill_in 'password', with: 'password'
     click_button 'Login'
+
+    save_and_open_page
     expect(page).to have_content 'Log Out'
   end
 
@@ -16,6 +18,8 @@ describe "the signin process" do
     fill_in 'email', with: 'user@example.com'
     fill_in 'password', with: 'wrong'
     click_button 'Login'
+
+    save_and_open_page
     expect(page).to have_content 'Log In'
   end
 end
