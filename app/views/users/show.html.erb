@@ -1,15 +1,30 @@
 <div class="row">
   <div class="col-sm-2 sidebar text-center">
+    <%= flash[:notice]%>
+    <h6 class="text-center">Your logged in as:</h6>
+    <h3 class="text-center"><%=@user.name %></h3>
+    <%= image_tag @user.avatar.url(:thumb) %>
+    </br>
+    </br>
 
-    <h6>Your logged in as:</h6>
-    <h3><%=@user.name %></h3>
+
+    <button type="submit" class="btn btn-primary btn-block btn-sm actions text-center">Edit Profile</button>
+    <button type="submit" class="btn btn-primary btn-block btn-sm actions text-center">My Photos</button>
+    <button type="submit" class="btn btn-primary btn-block btn-sm actions text-center">My Favorites</button>
+
+    <p>Add Image Avatar:</p>
+    <%=render 'avatar' %>
+
 
   </div>
 
-  <div class="col-sm-8 text-center">
+  <div class="col-sm-10 text-center">
 
     <h6>Main Area</h6>
     <h3>Stuff</h3>
+
+
+    <%= image_tag @user.avatar.url %>
 
   </div>
 </div>

@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(post_params)
+    if @user.update(user_params)
       render "show"
     else
       render "edit"
@@ -44,6 +44,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
   end
 end
