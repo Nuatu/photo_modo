@@ -20,11 +20,15 @@
 
   <div class="col-sm-10 text-center">
 
-    <h6>Main Area</h6>
-    <h3>Stuff</h3>
+    <h3>The Golden Era</h3>
 
+    <% @user.images.each do |image| %>
+      <%=image_tag image.photo.url(:medium) %>
+      </br>
+      </br>
 
-    <%= image_tag @user.avatar.url %>
+    <% end %>
+
 
   </div>
 </div>
