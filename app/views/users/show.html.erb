@@ -3,17 +3,28 @@
     <%= flash[:notice]%>
     <h6 class="text-center">Your logged in as:</h6>
     <h3 class="text-center"><%=@user.name %></h3>
-    <%= image_tag @user.avatar.url(:thumb) %>
+
+    <%= image_tag @user.avatar.url(:thumb), class: 'avatar' %>
+
     </br>
     </br>
 
 
-    <button type="submit" class="btn btn-primary btn-block btn-sm actions text-center">Edit Profile</button>
-    <button type="submit" class="btn btn-primary btn-block btn-sm actions text-center">My Photos</button>
-    <button type="submit" class="btn btn-primary btn-block btn-sm actions text-center">My Favorites</button>
+
+    <p><%= link_to "Edit Profile", edit_user_path(@user), :class => "btn btn-primary btn-block btn-sm actions text-center" %></p>
+    <p><%= link_to "Delete Profile", user_path(@user),
+                             :data => {:confirm => "You sure?",
+                                       :method => "delete"},
+                             :class => "btn btn-danger btn-block btn-sm actions text-center" %></p>
+
+    <p><%= link_to "Add New Photo", new_user_image_path(@user), :class => "btn btn-success btn-block btn-sm actions text-center" %></p>
 
     <p>Add Image Avatar:</p>
     <%=render 'avatar' %>
+
+    <p>New Photo:</p>
+    <%=render 'images/image_form' %>
+
 
 
   </div>

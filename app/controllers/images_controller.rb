@@ -8,6 +8,7 @@ class ImagesController < ApplicationController
 
   def new
     @image = Image.new
+    @user = User.find(params[:user_id])
   end
 
   def create
@@ -15,7 +16,7 @@ class ImagesController < ApplicationController
     @image = @user.images.new(image_params)
     if @image.save
       session[:image_id] = @image.id
-      redirect_to user_image_path(@user, @image), notice: "Image uploaded"
+      redirect_to user_path(@user), notice: "Image uploaded"
     else
       render "new"
     end

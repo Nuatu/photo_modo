@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @image = Image.new
   end
 
   def edit
@@ -28,9 +29,10 @@ class UsersController < ApplicationController
   end
 
   def update
+    # @image = Image.new
     @user = User.find(params[:id])
     if @user.update(user_params)
-      render "show"
+      redirect_to user_path(@user), notice: "Image uploaded"
     else
       render "edit"
     end
