@@ -1,13 +1,9 @@
-<%= render("layouts/errors", :object => @contact) %>
+<%= render("layouts/errors", :object => @user) %>
 
-<%= form_for(@contact) do |f| %>
+<%= form_for(@user) do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name %>
-  </div>
-  <div class="form-group">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
   </div>
   <div class="form-group">
     <%= f.label :email %>
