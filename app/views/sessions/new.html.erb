@@ -1,16 +1,19 @@
-<h1>Log In</h1>
+<div class="text-center bubble">
+  <h1>Log In</h1>
 
-  <%= flash[:alert] %>
-  <%= flash[:notice] %>
+    <%= flash[:alert] %>
+    <%= flash[:notice] %>
 
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </div>
-  <button type="submit" class="btn btn-primary btn-xs actions">Login</button>
-<% end %>
+  <%= form_tag sessions_path do %>
+    <div class="field">
+      <%= label_tag :email %><br />
+      <%= text_field_tag :email, params[:email] %>
+    </div>
+    <div class="field">
+      <%= label_tag :password %><br />
+      <%= password_field_tag :password %>
+    </div>
+    </br>
+    <button type="submit" class="btn btn-primary btn-md actions">Submit</button>
+  <% end %>
+</div>

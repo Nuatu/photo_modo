@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :authorize, only: [:show]
+
   # def index
   #   @users = User.all
   # end
@@ -13,7 +15,6 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user.id), notice: "Thank you for signing up!"
-
     else
       render "new"
     end
@@ -22,6 +23,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @image = Image.new
+
+    if @user.id == session[:user_id]
+      render 'show'
+    else
+      redirect_to user_path(session[:user_id])
+    end
   end
 
   def edit

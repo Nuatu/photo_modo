@@ -1,47 +1,42 @@
 <div class="row">
-  <div class="col-sm-2 sidebar text-center">
+  <div class="col-sm-2 sidebar text-center bubble">
     <%= flash[:notice]%>
     <h6 class="text-center">Your logged in as:</h6>
     <h3 class="text-center"><%=@user.name %></h3>
 
-    <%= image_tag @user.avatar.url(:thumb), class: 'avatar' %>
+    <% if @user.avatar? %>
+      <%= image_tag @user.avatar.url(:thumb), class: 'avatar' %>
+    <% else %>
+      </br>
+      </br>
+      <p>Want to add an Avatar?</p>
+      <p>You can do so within</p>
+      <p>Edit Profile!</p>
+    <% end %>
+    </br>
+    </br>
 
-    </br>
-    </br>
 
     <p><%= link_to "Edit Profile", edit_user_path(@user), :class => "btn btn-primary btn-block btn-sm actions text-center" %></p>
     <p><%= link_to "Delete Profile", user_path(@user),
                              :data => {:confirm => "You sure?",
                                        :method => "delete"},
                              :class => "btn btn-danger btn-block btn-sm actions text-center" %></p>
-
     </br>
     </br>
-
-
     <p>New Photo:</p>
     <%=render 'images/image_form' %>
-
-
-
   </div>
-
-  <div class="col-sm-10 text-center">
-
-    <h3>The Golden Era</h3>
-
+  <div class="col-sm-6 text-center bubble main-show">
+    <h3><%= "#{current_user.name}'s Photos" %></h3>
     <% @user.images.each do |image| %>
       <%=image_tag image.photo.url(:medium) %>
       <p><%= link_to "Delete Image", user_image_path(@user, image),
                              :data => {:confirm => "You sure?",
                                        :method => "delete"},
                              :class => "btn btn-danger btn-sm actions" %></p>
-
       </br>
       </br>
-
     <% end %>
-
-
   </div>
 </div>
